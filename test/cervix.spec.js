@@ -25,8 +25,7 @@ function turnIntoCycleDayObject(value, fakeDate) {
     date: fakeDate,
     cervix: {
       opening: cervixStates[value].opening,
-      firmness: cervixStates[value].firmness,
-      exclude: false
+      firmness: cervixStates[value].firmness
     }
   }
 }
@@ -42,16 +41,14 @@ describe('detects cervix shift', () => {
         date: 10,
         cervix: {
           opening: 1,
-          firmness: 1,
-          exclude: false
+          firmness: 1
         }
       },
       evaluationCompleteDay: {
         date: 13,
         cervix: {
           opening: 0,
-          firmness: 0,
-          exclude: false
+          firmness: 0
         }
       }
     })
@@ -66,16 +63,14 @@ describe('detects cervix shift', () => {
         date: 0,
         cervix: {
           opening: 0,
-          firmness: 1,
-          exclude: false
+          firmness: 1
         },
       },
       evaluationCompleteDay: {
         date: 3,
         cervix: {
           opening: 0,
-          firmness: 0,
-          exclude: false
+          firmness: 0
         }
       }
     })
@@ -90,8 +85,7 @@ describe('detects cervix shift', () => {
         date: 6,
         cervix: {
           opening: 1,
-          firmness: 0,
-          exclude: false
+          firmness: 0
         },
       },
       evaluationCompleteDay: {
@@ -99,7 +93,6 @@ describe('detects cervix shift', () => {
         cervix: {
           opening: 0,
           firmness: 0,
-          exclude: false
         }
       }
     })

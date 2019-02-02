@@ -1,10 +1,10 @@
 module.exports = function (cycleDays) {
   const temperatureDays = cycleDays
-    .filter(day => day.temperature && !day.temperature.exclude)
+    .filter(day => typeof day.temperature === 'number')
     .map(day => {
       return {
         originalCycleDay: day,
-        temp: rounded(day.temperature.value, 0.05)
+        temp: rounded(day.temperature, 0.05)
       }
     })
 

@@ -1,22 +1,3 @@
-function convertToSymptoFormat(val) {
-  const sympto = { date: val.date }
-  if (val.temperature) sympto.temperature = {
-    value: val.temperature,
-    time: '08:00',
-    exclude: false
-  }
-  if (val.cervix && typeof val.cervix.opening === 'number' && typeof val.cervix.firmness === 'number') sympto.cervix = {
-    opening: val.cervix.opening,
-    firmness: val.cervix.firmness,
-    exclude: false
-  }
-  if (val.bleeding) sympto.bleeding = {
-    value: val.bleeding,
-    exclude: false
-  }
-  return sympto
-}
-
 module.exports.cervixShiftAndFhmOnSameDay = [
   { date: '2018-08-01', bleeding: 1 },
   { date: '2018-08-02', bleeding: 2 },
@@ -35,7 +16,7 @@ module.exports.cervixShiftAndFhmOnSameDay = [
   { date: '2018-08-15', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-08-16', temperature: 36.95, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-08-17', temperature: 36.95, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cycleWithFhmNoCervixShift = [
   { date: '2018-08-01', bleeding: 1 },
@@ -51,7 +32,7 @@ module.exports.cycleWithFhmNoCervixShift = [
   { date: '2018-08-11', temperature: 36.9, cervix: { opening: 1, firmness: 0 } },
   { date: '2018-08-12', temperature: 36.95, cervix: { opening: 0, firmness: 1 } },
   { date: '2018-08-13', temperature: 36.95, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cycleWithoutFhmNoCervixShift = [
   { date: '2018-06-02', temperature: 36.6, bleeding: 2 },
@@ -62,7 +43,7 @@ module.exports.cycleWithoutFhmNoCervixShift = [
   { date: '2018-06-09', temperature: 36.8 },
   { date: '2018-06-10', temperature: 36.9, cervix: { opening: 2, firmness: 0 } },
   { date: '2018-06-13', temperature: 36.9, cervix: { opening: 1, firmness: 1 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.longCycleWithoutAnyShifts = [
   { date: '2018-07-01', temperature: 36.65, bleeding: 1 },
@@ -91,7 +72,7 @@ module.exports.longCycleWithoutAnyShifts = [
   { date: '2018-07-24', temperature: 36.65, cervix: { opening: 1, firmness: 1 } },
   { date: '2018-07-25', temperature: 36.65, cervix: { opening: 0, firmness: 1 } },
   { date: '2018-07-26', temperature: 36.65, cervix: { opening: 2, firmness: 1 } },
-].map(convertToSymptoFormat)
+]
 
 module.exports.longAndComplicatedCycle = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2 },
@@ -116,7 +97,7 @@ module.exports.longAndComplicatedCycle = [
   { date: '2018-06-25', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-26', temperature: 36.8, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-27', temperature: 36.9, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.tempShift3DaysAfterCervixShift = [
   { date: '2018-05-08', bleeding: 3 },
@@ -141,7 +122,7 @@ module.exports.tempShift3DaysAfterCervixShift = [
   { date: '2018-05-27', temperature: 36.8, cervix: { opening: 1, firmness: 0 } },
   { date: '2018-05-28', temperature: 36.6, cervix: { opening: 1, firmness: 0 } },
   { date: '2018-05-29', bleeding: 2 }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cervixShift3DaysAfterTempShift = [
   { date: '2018-04-05', bleeding: 3 },
@@ -163,7 +144,7 @@ module.exports.cervixShift3DaysAfterTempShift = [
   { date: '2018-04-22', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-04-23', temperature: 37.1, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-04-24', temperature: 36.75, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cervixShift4DaysAfterTempShift = [
   { date: '2018-04-05', bleeding: 3 },
@@ -185,7 +166,7 @@ module.exports.cervixShift4DaysAfterTempShift = [
   { date: '2018-04-22', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-04-23', temperature: 37.1, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-04-24', temperature: 36.75, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.noOvulationDetected = [
   { date: '2018-03-08', bleeding: 3 },
@@ -204,12 +185,12 @@ module.exports.noOvulationDetected = [
   { date: '2018-03-21', temperature: 36.7, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-03-22', temperature: 36.7, cervix: { opening: 0, firmness: 1 } },
   { date: '2018-03-23', temperature: 36.7, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.fiveDayCycle = [
   { date: '2018-08-01', bleeding: 2 },
   { date: '2018-08-03', bleeding: 3 }
-].map(convertToSymptoFormat)
+]
 
 module.exports.fhmOnDay12 = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2 },
@@ -223,7 +204,7 @@ module.exports.fhmOnDay12 = [
   { date: '2018-06-14', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-17', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-18', temperature: 36.9, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.fhmOnDay15 = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2 },
@@ -240,7 +221,7 @@ module.exports.fhmOnDay15 = [
   { date: '2018-06-16', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-17', temperature: 36.9, cervix: { opening: 0, firmness: 0 } },
   { date: '2018-06-18', temperature: 36.9, cervix: { opening: 0, firmness: 0 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cycleWithEarlyCervix = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2 },
@@ -263,7 +244,7 @@ module.exports.cycleWithEarlyCervix = [
   { date: '2018-06-24', temperature: 36.85, cervix: { opening: 1, firmness: 1 } },
   { date: '2018-06-26', temperature: 36.8, cervix: { opening: 1, firmness: 1 } },
   { date: '2018-06-27', temperature: 36.9, cervix: { opening: 1, firmness: 1 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.cycleWithCervixOnFirstDay = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2, cervix: { opening: 1, firmness: 1 } },
@@ -286,7 +267,7 @@ module.exports.cycleWithCervixOnFirstDay = [
   { date: '2018-06-24', temperature: 36.85, cervix: { opening: 1, firmness: 1 } },
   { date: '2018-06-26', temperature: 36.8, cervix: { opening: 1, firmness: 1 } },
   { date: '2018-06-27', temperature: 36.9, cervix: { opening: 1, firmness: 1 } }
-].map(convertToSymptoFormat)
+]
 
 module.exports.fertileCervixOnlyAfterEndOfTempEval = [
   { date: '2018-06-01', temperature: 36.6, bleeding: 2 },
@@ -311,4 +292,4 @@ module.exports.fertileCervixOnlyAfterEndOfTempEval = [
   { date: '2018-06-30', temperature: 36.9, cervix: { opening: 0, firmness: 0 }},
   { date: '2018-07-01', temperature: 36.9, cervix: { opening: 0, firmness: 0 }},
   { date: '2018-07-02', temperature: 36.9, cervix: { opening: 0, firmness: 0 }}
-].map(convertToSymptoFormat)
+]

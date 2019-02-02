@@ -38,7 +38,7 @@ module.exports = function(cycle, previousCycles, secondarySymptom) {
 function getDaysUntilFertileSecondarySymptom(days, secondarySymptom = 'mucus') {
   const firstFertileSecondarySymptomDayIndex = days.findIndex(day => {
     if (secondarySymptom === 'mucus') {
-      return day.mucus && day.mucus.value > 1
+      return day.mucus && day.mucus > 1
     } else if (secondarySymptom === 'cervix') {
       return day.cervix && day.cervix.opening > 0
         || day.cervix && day.cervix.firmness > 0

@@ -5,7 +5,7 @@ const expect = chai.expect
 
 function turnIntoCycleDayObject(value, fakeDate) {
   return {
-    mucus : { value },
+    mucus : value,
     date: fakeDate
   }
 }
@@ -20,11 +20,11 @@ describe('detect mucus shift', () => {
         detected: true,
         mucusPeak: {
           date: 10,
-          mucus: { value: 3 }
+          mucus: 3
         },
         evaluationCompleteDay: {
           date: 13,
-          mucus: { value: 0 }
+          mucus: 0
         }
       })
     })
@@ -39,7 +39,7 @@ describe('detect mucus shift', () => {
     it('detects no mucus shift when there are no mucus values', function () {
       const status = getMucusStatus(Array(10).fill({
         date: 1,
-        temperature: { value: 35 }
+        temperature: 35
       }))
       expect(status).to.eql({ detected: false })
     })
@@ -66,11 +66,11 @@ describe('detect mucus shift', () => {
         detected: true,
         mucusPeak: {
           date: 10,
-          mucus: { value: 3 }
+          mucus: 3
         },
         evaluationCompleteDay: {
           date: 13,
-          mucus: { value: 0 }
+          mucus: 0
         }
       })
     })

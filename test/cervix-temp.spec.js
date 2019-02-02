@@ -508,37 +508,30 @@ describe('combining temperature and cervix tracking', () => {
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '01.09.2018',
-          bleeding: { value: 0 },
+          bleeding: 0,
           cervix: {opening: 0, firmness: 0}
         }],
       })).to.throw(AssertionError)
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2018-01-01',
-          bleeding: { value: 'medium' },
-          temperature: { value: 36.6 }
+          bleeding: 'medium',
+          temperature: 36.6
         }],
       })).to.throw(AssertionError)
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2018-09-01',
-          bleeding: { value: 0 },
-          temperature: { value: '36.6' }
+          bleeding: 0,
+          temperature: '36.6'
         }],
       })).to.throw(AssertionError)
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2018-09-01',
-          bleeding: { value: 0 },
-          temperature: { value: 36.6 },
+          bleeding: 0,
+          temperature: 36.6,
           cervix: {opening: 4, firmness: 18}
-        }],
-      })).to.throw(AssertionError)
-      expect(() => getSensiplanStatus({
-        cycle: [{
-          date: '2018-09-01',
-          bleeding: { value: 0 },
-          temperature: 37.9
         }],
       })).to.throw(AssertionError)
     })
@@ -546,11 +539,11 @@ describe('combining temperature and cervix tracking', () => {
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2018-09-01',
-          bleeding: { value: 0 }
+          bleeding: 0
         }],
         earlierCycles: [[{
           date: '2017-09-23',
-          bleeding: { value: '1' }
+          bleeding: '1'
         }]]
       })).to.throw(AssertionError)
     })

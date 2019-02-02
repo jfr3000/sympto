@@ -1,7 +1,7 @@
 module.exports = function (cycleDays, tempEvalEndIndex) {
   const notDetected = { detected: false }
   const cervixDays = cycleDays
-    .filter(day => day.cervix && !day.cervix.exclude)
+    .filter(day => day.cervix)
     .filter(day => typeof day.cervix.opening === 'number' && typeof day.cervix.firmness === 'number')
 
   // we search for the day of cervix peak, which must:
@@ -35,7 +35,7 @@ module.exports = function (cycleDays, tempEvalEndIndex) {
     // been completed
     const relevantDays = cycleDays
       .slice(cycleDayIndex + 1, tempEvalEndIndex + 1)
-      .filter(day => day.cervix && !day.cervix.exclude)
+      .filter(day => day.cervix)
 
     const onlyClosedAndHardUntilEndOfTempEval = relevantDays.every(day => {
       return isClosedAndHard(day.cervix)

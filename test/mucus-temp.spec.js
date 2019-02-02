@@ -611,32 +611,32 @@ describe('combining temperature and mucus tracking', () => {
       expect(() => getSensiplanStatus({
         cycle: [{
           hello: 'world',
-          bleeding: { value: 0 }
+          bleeding: 0
         }],
         earlierCycles: [[{
           date: '1992-09-09',
-          bleeding: { value: 0 }
+          bleeding: 0
         }]]
       })).to.throw(AssertionError)
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2018-04-13',
-          temperature: {value: '35'},
-          bleeding: { value: 0 }
+          temperature: '35',
+          bleeding: 0
         }],
         earlierCycles: [[{
           date: '1992-09-09',
-          bleeding: { value: 0 }
+          bleeding: 0
         }]]
       })).to.throw(AssertionError)
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '09-14-2017',
-          bleeding: { value: 0 }
+          bleeding: 0
         }],
         earlierCycles: [[{
           date: '1992-09-09',
-          bleeding: { value: 0 }
+          bleeding: 0
         }]]
       })).to.throw(AssertionError)
     })
@@ -644,9 +644,7 @@ describe('combining temperature and mucus tracking', () => {
       expect(() => getSensiplanStatus({
         cycle: [{
           date: '2017-01-01',
-          bleeding: {
-            value: 'medium'
-          }
+          bleeding: 'medium'
         }],
         earlierCycles: [[
           {
