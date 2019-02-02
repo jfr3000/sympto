@@ -1,0 +1,41 @@
+{
+  "name": "sympto",
+  "version": "1.0.0",
+  "contributors": [
+    "Julia Friesel <julia.friesel@gmail.com>",
+    "Marie Kochsiek",
+    "Tina Baumann"
+  ],
+  "description": "Apply the sympto-thermal method to cycle data",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/bloodyhealth/sympto.git"
+  },
+  "keywords": [
+    "sympto-thermal",
+    "NFP"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/bloodyhealth/sympto/issues"
+  },
+  "homepage": "https://gitlab.com/bloodyhealth/sympto#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^5.13.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "js-joda": "^1.9.2"
+  }
+}
