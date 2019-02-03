@@ -2,6 +2,8 @@
 
 Accepts an array of cycle days (one cycle) and returns the symptothermal status for that cycle. Run `node example.js` for a demo.
 
+Find out more about the [symptothermal method (in German)](https://www.familienplanung.de/verhuetung/verhuetungsmethoden/natuerliche-methoden/symptothermale-methode/).
+
 ## Usage
 
 Pass in all necessary info as an object with the following properties:
