@@ -119,6 +119,8 @@ function throwIfArgsAreNotInRequiredFormat(cycles) {
       assert.doesNotThrow(() => LocalDate.parse(day.date), "Date must be given in right string format.")
       if (day.temperature) assert.equal(typeof day.temperature, 'number', "Temperature value must be a number.")
       if (day.mucus) assert.equal(typeof day.mucus, 'number', "Mucus value must be a number.")
+      if (day.mucus) assert.equal(typeof day.cervix.opening, 'number', "Cervix opening value must be a number.")
+      if (day.mucus) assert.equal(typeof day.cervix.firmness, 'number', "Cervix firmness value must be a number.")
       if (day.mucus) assert.ok(day.mucus >= 0, "Mucus value must greater or equal to 0.")
       if (day.mucus) assert.ok(day.mucus <= 4, "Mucus value must be below 5.")
       if (day.cervix) assert.ok(day.cervix.opening >= 0, "Cervix opening value must be 0 or bigger")
