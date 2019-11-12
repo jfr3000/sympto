@@ -112,12 +112,6 @@ describe('detects no cervix shift', () => {
     const status = getCervixStatus(values, 17)
     expect(status).to.eql({ detected: false })
   })
-  it('when the cervix shift is happening after tempEvalEnd', () => {
-    const values = [1,1,1,1,1,2,3,3,3,3,1,1,1,1,0,0,0,0,0,0,0]
-      .map(turnIntoCycleDayObject)
-    const status = getCervixStatus(values, 10)
-    expect(status).to.eql({ detected: false })
-  })
   it('if no days indicate fertile cervix which could be cervix peak', () => {
     const values = [1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1]
       .map(turnIntoCycleDayObject)
