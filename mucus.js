@@ -1,5 +1,5 @@
 module.exports = function (cycleDays, tempEvalEndIndex) {
-  const notDetected = { detected: false}
+  const notDetected = { detected: false }
   const mucusDays = cycleDays.filter(day => typeof day.mucus === 'number')
   let currentBestQuality = 0
 
@@ -31,10 +31,6 @@ module.exports = function (cycleDays, tempEvalEndIndex) {
     if (bestQualityOccursIn3FollowingDays) continue
 
     const cycleDayIndex = cycleDays.indexOf(day)
-
-    // if temperature evaluation has been completed an we still haven't found
-    // a candidate, there is no mucus shift
-    if (cycleDayIndex > tempEvalEndIndex) return notDetected
 
     // no best quality day may occur until temperature evaluation has
     // been completed
