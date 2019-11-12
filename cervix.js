@@ -27,10 +27,6 @@ module.exports = function (cycleDays, tempEvalEndIndex) {
 
     const cycleDayIndex = cycleDays.indexOf(day)
 
-    // if temperature evaluation has been completed an we still haven't found
-    // a candidate, there is no cervix shift
-    if (cycleDayIndex > tempEvalEndIndex) return notDetected
-
     // no other fertile cervix value may occur until temperature evaluation has
     // been completed
     const relevantDays = cycleDays
