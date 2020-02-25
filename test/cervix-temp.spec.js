@@ -18,7 +18,6 @@ const {
   fhmOnDay15,
   cycleWithEarlyCervix,
   cycleWithCervixOnFirstDay,
-  fertileCervixOnlyAfterEndOfTempEval
 } = require('./cervix-temp-fixtures')
 
 const expect = chai.expect
@@ -206,13 +205,13 @@ describe('combining temperature and cervix tracking', () => {
         start: { date: '2018-04-20', time: '18:00' }
       })
     })
-    it('with cervix shift 4 days after temperature shift detects no post-ovulatory phase', () => {
+    it('with cervix shift 4 days after temperature shift also detects post-ovulatory phase', () => {
       const status = getSensiplanStatus({
         cycle: cervixShift4DaysAfterTempShift,
         previousCycle: cervixShiftAndFhmOnSameDay,
         secondarySymptom: 'cervix'
       })
-      expect(Object.keys(status.phases).length).to.eql(2)
+      expect(Object.keys(status.phases).length).to.eql(3)
 
       expect(status.phases.preOvulatory).to.eql({
         cycleDays: cervixShift4DaysAfterTempShift
@@ -223,34 +222,15 @@ describe('combining temperature and cervix tracking', () => {
       expect(status.phases.periOvulatory).to.eql({
         cycleDays: cervixShift4DaysAfterTempShift
           .filter(({date}) => {
-            return date >= '2018-04-10'
+            return date >= '2018-04-10' && date <= '2018-04-22'
           }),
-        start: { date: '2018-04-10' }
+        start: { date: '2018-04-10' },
+        end: { date: '2018-04-22', time: '18:00'}
       })
-    })
-    it('with fertile cervix only occurring after end of temperature evaluation ignores it', () => {
-      const status = getSensiplanStatus({
-        cycle: fertileCervixOnlyAfterEndOfTempEval,
-        previousCycle: cervixShiftAndFhmOnSameDay,
-        secondarySymptom: 'cervix'
-      })
-
-      expect(status.temperatureShift).to.be.undefined()
-      expect(status.cervixShift).to.be.undefined()
-
-      expect(Object.keys(status.phases).length).to.eql(2)
-      expect(status.phases.preOvulatory).to.eql({
-        start: { date: '2018-06-01' },
-        end: { date: '2018-06-05' },
-        cycleDays: fertileCervixOnlyAfterEndOfTempEval
-          .filter(({date}) => date <= '2018-06-05')
-      })
-      expect(status.phases.periOvulatory).to.eql({
-        start: { date: '2018-06-06' },
-        cycleDays: fertileCervixOnlyAfterEndOfTempEval
-          .filter(({date}) => {
-            return date > '2018-06-05'
-          })
+      expect(status.phases.postOvulatory).to.eql({
+        cycleDays: cervixShift4DaysAfterTempShift
+          .filter(({date}) => date >= '2018-04-22'),
+        start: { date: '2018-04-22', time: '18:00' }
       })
     })
     it('with no shifts no ovulation is found detects only pre and peri-ovulatory phase', () => {
